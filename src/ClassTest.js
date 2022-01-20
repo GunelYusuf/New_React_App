@@ -7,10 +7,13 @@ import React from "react";
 class ClassTest extends React.Component{
     constructor(props){
         super(props);
+
+        this.state={name:'',surname:'Yusubov'};
     }
 
     render(){
-    
+      this.setState({name: 'Elchin'})
+
         return( 
         <p>It is a Class Component </p>
         )
