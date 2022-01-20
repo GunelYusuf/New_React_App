@@ -24,12 +24,13 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
+         <Counter/>
         <Users {...user}/>
         <WeatherData {...weather}>
           <p>some children</p>
         </WeatherData>
-        <Counter/>
-        {/* <ClassTest/> */}
+       
+        <ClassTest/>
         <a
           className="App-link"
           href="https://reactjs.org"

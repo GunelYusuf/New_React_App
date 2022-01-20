@@ -11,8 +11,16 @@ class ClassTest extends React.Component{
         this.state={name:'',surname:'Yusubov'};
     }
 
+    componentDidMount(){
+    console.log('Class based component did mount')
+    }
+
+    componentWillUnmount(){
+        console.log('Component went');
+    }
+
     render(){
-      this.setState({name: 'Elchin'})
+      //this.setState({name: 'Elchin'})
 
         return( 
         <p>It is a Class Component </p>
