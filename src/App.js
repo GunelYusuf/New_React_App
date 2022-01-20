@@ -4,6 +4,40 @@ import { Users } from './components/Users';
 import { WeatherData } from './components/Weather';
 
 
+
+function Avatar(props){
+  return(
+     <img 
+     src={props.user.AvatarUrl} 
+     alt={props.user.name} />
+  )
+}
+
+function UserInfo(props){
+  return(
+      <div className='UserInfo'>
+       <Avatar user={props.user}/>
+        <div className='User-Info-name'>
+          {props.user.name}
+        </div>
+     </div>
+  )
+}
+
+function Comment(props) {
+  return (
+    <div className='Comment'>
+      <UserInfo user={props.author} />
+      <div className='Comment-text'>
+        {props.text}
+      </div>
+      <div className='Comment-date'>
+        {formatDate(props.date)}
+      </div>
+    </div>
+  );
+}
+
 function App() {
   const user={
     name: 'Gunel',
