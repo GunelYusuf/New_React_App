@@ -46,9 +46,13 @@ function App() {
  }
 
 const [users,setUsers] = React.useState(userInitialValue)
-const handleUserdeletion = (email) =>{
+const handleUserdeletion = React.useCallback((email) =>{
   setUsers(oldUsers => oldUsers.filter(oldUsers => oldUsers.email !== email));
-}
+},[]);
+const number = React.useMemo(() => 5,[]);
+
+const hasEmil = React.useMemo(() => users.some(user => user.name.toLowerCase()==='emil'),[users]);
+
   return (
     <div className="App">
       <header className="App-header">
@@ -57,7 +61,7 @@ const handleUserdeletion = (email) =>{
           Edit <code>src/App.js</code> and save to reload.
         </p>
          <Counter/>
-         <UsersList onUserDelete={handleUserdeletion} users={users}/>
+         <UsersList hasEmil={hasEmil} onUserDelete={handleUserdeletion} users={users}/>
         <Users {...user}/>
         <WeatherData {...weather}>
           <p>some children</p>
