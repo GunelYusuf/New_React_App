@@ -19,18 +19,18 @@ import React from "react";
 //     )
 //  }
 
- export const UsersList = ({users = []}) =>{
+ export const UsersList = ({users,onUserDelete = []}) =>{
     return (
-        <ul>{users.map(({name,surname,age,email},index) => (
+        <ul>
+            {users.map(({name,surname,age,email},index) => (
           <React.Fragment key={email}>
            <li style={{textAlign: 'left'}} >
-             {index+1}. {name} {surname} {age} (<a href={`mailto: ${email}`}>{email}</a>)
+             {index + 1}. {name} {surname} {age} (<a href={`mailto: ${email}`}>{email}</a>)
           </li>
-           <li style={{textAlign: 'left'}}>
-             {index+1}. {name} {surname} {age} (<a href={`mailto: ${email}`}>{email}</a>)
-          </li>
+           <button onClick={() => onUserDelete(email)}>Remove</button>
           </React.Fragment>
          
-        ))}</ul>
+          ))}
+        </ul>
     )
  }

@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 import ClassTest,{TestClass} from './ClassTest';
 import { Users } from './components/Users';
@@ -5,22 +6,8 @@ import { UsersList } from './components/UsersList';
 import { WeatherData } from './components/Weather';
 import { Counter } from './Counter';
 
-
-
-function App() {
-  const user={
-    name: 'Gunel',
-    lastName: 'Yusubova',
-    age:26
-  }
- const weather={
-   city:'Baku',
-   degree:1,
-   unit:'Celcium'
- }
-
- const users = [
-   {
+const userInitialValue = [
+{
      name: 'Gunel',
      surname: 'Yusubova',
      age: 26,
@@ -44,7 +31,24 @@ function App() {
      age: 27,
      email: 'emilkh@gmail.com'
    }
- ]
+]
+
+function App() {
+  const user={
+    name: 'Gunel',
+    lastName: 'Yusubova',
+    age:26
+  }
+ const weather={
+   city:'Baku',
+   degree:1,
+   unit:'Celcium'
+ }
+
+const [users,setUsers] = React.useState(userInitialValue)
+const handleUserdeletion = (email) =>{
+  setUsers(oldUsers => oldUsers.filter(oldUsers => oldUsers.email !== email));
+}
   return (
     <div className="App">
       <header className="App-header">
@@ -53,7 +57,7 @@ function App() {
           Edit <code>src/App.js</code> and save to reload.
         </p>
          <Counter/>
-         <UsersList users={users}/>
+         <UsersList onUserDelete={handleUserdeletion} users={users}/>
         <Users {...user}/>
         <WeatherData {...weather}>
           <p>some children</p>
